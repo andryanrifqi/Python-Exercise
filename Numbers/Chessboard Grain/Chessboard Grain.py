@@ -5,11 +5,4 @@ def square(number):
     grains = pow(2,number-1)
     return grains
 def total():
-    count = 1
-    pwr=0
-    
-    while count <= 65:
-        total_grain = pow(2,pwr)
-        pwr+=1
-        count+=1
-    return total_grain-1
+    return 2**64-1
