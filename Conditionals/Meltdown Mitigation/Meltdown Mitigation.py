@@ -1,4 +1,3 @@
-"""Functions to prevent a nuclear meltdown."""
 def is_criticality_balanced(temperature, neutrons_emitted):
     """Verify criticality is balanced.
  
@@ -11,10 +10,7 @@ def is_criticality_balanced(temperature, neutrons_emitted):
     - The number of neutrons emitted per second is greater than 500.
     - The product of temperature and neutrons emitted per second is less than 500000.
     """
-    if temperature<800 and neutrons_emitted>500 and temperature*neutrons_emitted<500000:
-        return True
-    else:
-        return False
+    return bool(temperature < 800 and neutrons_emitted > 500 and temperature * neutrons_emitted < 500000)
 
 def reactor_efficiency(voltage, current, theoretical_max_power):
     """Assess reactor efficiency zone.
@@ -35,15 +31,14 @@ def reactor_efficiency(voltage, current, theoretical_max_power):
     (generated power/ theoretical max power)*100
     where generated power = voltage * current
     """
-    efficiency = ((voltage*current)/theoretical_max_power)*100
+    efficiency = ((voltage * current) / theoretical_max_power) * 100
     if efficiency < 30:
         return 'black'
-    elif efficiency < 60:
+    if efficiency < 60:
         return 'red'
-    elif efficiency < 80:
+    if efficiency < 80:
         return 'orange'
-    else:
-        return 'green'
+    return 'green'
     
 def fail_safe(temperature, neutrons_produced_per_second, threshold):
     """Assess and return status code for the reactor.
@@ -57,10 +52,10 @@ def fail_safe(temperature, neutrons_produced_per_second, threshold):
     2. 'NORMAL' -> `temperature * neutrons per second` +/- 10% of `threshold`
     3. 'DANGER' -> `temperature * neutrons per second` is not in the above-stated ranges
     """
-    burden = temperature*neutrons_produced_per_second 
-    if burden < threshold*(90/100):
+    burden = temperature * neutrons_produced_per_second 
+    if burden < threshold * (90 / 100):
         return 'LOW'
-    elif (burden > threshold*(90/100) and burden <= threshold) or burden < threshold*(110/100):
+    if (burden > threshold * (90 / 100) and burden <= threshold) or burden < threshold * (110 / 100):
         return 'NORMAL'
-    else:
-        return 'DANGER'
+    
+    return 'DANGER'
