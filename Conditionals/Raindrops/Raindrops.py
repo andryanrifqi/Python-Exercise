@@ -1,14 +1,10 @@
 def convert(number):
-    factors = []
-    for i in range(1, number+1):
-        if number%i == 0:
-           factors.append(i)
     output = ""
-    if 3 in factors:
+    if number % 3 == 0:
         output += "Pling"
-    if 5 in factors:
+    if number % 5 == 0:
         output += "Plang"
-    if 7 in factors:
+    if number % 7 == 0:
         output += "Plong"
 
     if len(output) != 0:
