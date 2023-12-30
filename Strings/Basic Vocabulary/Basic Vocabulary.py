@@ -39,11 +39,9 @@ def remove_suffix_ness(word):
 
     For example: "heaviness" becomes "heavy", but "sadness" becomes "sad".
     """
-    new_word = ''
-
     if 'ness' in word:
         if word.replace('ness','').endswith('i'):
-           return word.replace('iness','y')
+            return word.replace('iness','y')
         
         return word.replace('ness','')
     if word.endswith('y'):
