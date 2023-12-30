@@ -25,3 +25,22 @@ def make_word_groups(vocab_words):
     for word in vocab_words[1:]:
         output.append(vocab_words[0] + word)
     return ' :: '.join(output)
+
+def remove_suffix_ness(word):
+    """Remove the suffix from the word while keeping spelling in mind.
+ 
+    :param word: str - of word to remove suffix from.
+    :return: str - of word with suffix removed & spelling adjusted.
+ 
+    For example: "heaviness" becomes "heavy", but "sadness" becomes "sad".
+    """
+    new_word = ''
+    if 'ness' in word:
+        if word.replace('ness','').endswith('i'):
+           return word.replace('iness','y')
+        else:
+           return word.replace('ness','')
+    elif word.endswith('y'):
+        return word.replace('y','iness')
+    else:
+        return word + 'ness'
