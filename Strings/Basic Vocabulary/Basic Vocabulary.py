@@ -46,7 +46,7 @@ def remove_suffix_ness(word):
            return word.replace('iness','y')
         
         return word.replace('ness','')
-    elif word.endswith('y'):
+    if word.endswith('y'):
         return word.replace('y','iness')
     
     return word + 'ness'
