@@ -6,9 +6,5 @@ def is_valid(isbn):
         chars[-1] = '10'
     if not all(char.isdigit() for char in chars):
         return False
-    count = 10
-    total = 0
-    for char in chars:
-        total += int(char) * count
-        count -= 1  
-    return total % 11 == 0
+        
+    return sum(int(a) * b for a,b in zip(chars, range(10, 0, -1))) % 11 == 0
