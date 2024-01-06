@@ -69,3 +69,10 @@ def is_blackjack(card_one, card_two):
     """
     return ((card_one == 'A' and card_two in tens) or (card_two == 'A' and card_one in tens))
 
+def can_split_pairs(card_one, card_two):
+    """Determine if a player can split their hand into two hands.
+ 
+    :param card_one, card_two: str - cards dealt.
+    :return: bool - can the hand be split into two pairs? (i.e. cards are of the same value).
+    """
+    return value_of_card(card_one) == value_of_card(card_two)
