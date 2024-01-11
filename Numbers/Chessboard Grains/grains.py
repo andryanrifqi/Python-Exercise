@@ -4,7 +4,7 @@ def square(number):
         raise ValueError("square must be between 1 and 64")
 
     """Count the number of grains on designated tiles as determined by input number"""    
-    grains = pow(2, number-1)
+    grains = pow(2, number - 1)
     return grains
 
 def total():
