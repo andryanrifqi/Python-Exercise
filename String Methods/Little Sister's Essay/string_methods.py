@@ -6,3 +6,11 @@ def capitalize_title(title):
     :return: str - title string in title case (first letters capitalized).
     """
     return title.title()
+
+def check_sentence_ending(sentence):
+    """Check the ending of the sentence to verify that a period is present.
+ 
+    :param sentence: str - a sentence to check.
+    :return: bool - return True if punctuated correctly with period, False otherwise.
+    """
+    return sentence.endswith('.')
