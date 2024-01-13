@@ -1,3 +1,4 @@
-def to_rna(dna_strand):
-    mydict = {71: 67, 67: 71, 84: 65, 65: 85}
+mydict = str.maketrans("GCTA", "CGAU")
+
+def to_rna(dna_strand):    
     return dna_strand.translate(mydict)
