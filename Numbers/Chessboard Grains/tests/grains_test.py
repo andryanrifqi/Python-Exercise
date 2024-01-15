@@ -27,3 +27,13 @@ class GrainsTest(unittest.TestCase):
         self.assertEqual(err.exception.args[0], "square must be between 1 and 64")
     def test_returns_total_number_of_grains_on_board(self):
         self.assertEqual(total(), 18446744073709551615)
+    def test_negative_square_is_invalid(self):
+        with self.assertRaises(ValueError) as err:
+            square(-1)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "square must be between 1 and 64")
+    def test_square_greater_than_64_is_invalid(self):
+        with self.assertRaises(ValueError) as err:
+            square(65)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "square must be between 1 and 64")
