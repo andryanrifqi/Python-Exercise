@@ -20,3 +20,10 @@ class GrainsTest(unittest.TestCase):
         self.assertEqual(square(32), 2147483648)
     def test_grains_on_square_64(self):
         self.assertEqual(square(64), 9223372036854775808)
+    def test_square_0_is_invalid(self):
+        with self.assertRaises(ValueError) as err:
+            square(0)
+        self.assertEqual(type(err.exception), ValueError)
+        self.assertEqual(err.exception.args[0], "square must be between 1 and 64")
+    def test_returns_total_number_of_grains_on_board(self):
+        self.assertEqual(total(), 18446744073709551615)
