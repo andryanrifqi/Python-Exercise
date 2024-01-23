@@ -13,4 +13,4 @@ resistor_colors = {
     
 def value(colors):
 
-    return int(str(resistor_colors[colors[0]]) + str(resistor_colors[colors[1]]))
+    return resistor_colors[colors[0]] * 10 + resistor_colors[colors[1]]
