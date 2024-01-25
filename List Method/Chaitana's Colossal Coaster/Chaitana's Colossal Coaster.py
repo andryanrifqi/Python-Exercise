@@ -58,8 +58,8 @@ def how_many_namefellows(queue, person_name):
     """
     person_count = 0
     for name in queue:
-      if person_name == name:
-          person_count += 1
+        if person_name == name:
+            person_count += 1
     return person_count
 
 
