@@ -22,7 +22,9 @@ resistor_tolerance = {
         "silver" : " ±10%",
     }
 
-def count_ohms_value(colors):
+def resistor_value(colors):
+    prefix = ""
+    
     if len(colors) == 1:
         ohms_value = 0
     if len(colors) == 4:
@@ -30,11 +32,6 @@ def count_ohms_value(colors):
     if len(colors) == 5:
         ohms_value = (resistor_colors[colors[0]]*100 + resistor_colors[colors[1]]*10 + resistor_colors[colors[2]]) * pow(10, resistor_colors[colors[3]])
         
-    return ohms_value
-
-def prefix_finder(colors):
-    ohms_value =  count_ohms_value(colors)
-    prefix = ""
     if ohms_value > 1_000_000_000:
         prefix = "giga"
         ohms_value /= 1_000_000_000
@@ -45,7 +42,10 @@ def prefix_finder(colors):
         prefix = "kilo"
         ohms_value /= 1_000
 
-    return prefix
+    if type(ohms_value) is float and ohms_value.is_integer():
+        ohms_value = int(ohms_value)
+
+    return ohms_value, prefix
     
 def tolerance_finder(colors):
     if len(colors) == 1:
@@ -58,18 +58,7 @@ def tolerance_finder(colors):
     return tolerance
 
 def resistor_label(colors):
-    ohms_value = count_ohms_value(colors)
-    prefix = prefix_finder(colors)
+    ohms_value, prefix = resistor_value(colors)
     tolerance = tolerance_finder(colors)
-    
-    if ohms_value > 1_000_000_000:
-        ohms_value /= 1_000_000_000
-    if ohms_value > 1_000_000:
-        ohms_value /= 1_000_000
-    if ohms_value > 1_000:
-        ohms_value /= 1_000
-        
-    if type(ohms_value) is float and ohms_value.is_integer():
-        ohms_value = int(ohms_value)
         
     return f"{ohms_value} {prefix}ohms{tolerance}"
