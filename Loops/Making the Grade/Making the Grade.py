@@ -15,12 +15,7 @@ def count_failed_students(student_scores):
     :param student_scores: list - containing int student scores.
     :return: int - count of student scores at or below 40.
     """
-    failed_student = 0
-    for score in student_scores:
-        if score <= 40:
-            failed_student += 1
-
-    return failed_student
+    return sum(score <= 40 for score in student_scores)
 
 def above_threshold(student_scores, threshold):
     """Determine how many of the provided student scores were 'the best' based on the provided threshold.
