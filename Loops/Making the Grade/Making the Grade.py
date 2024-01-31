@@ -24,12 +24,7 @@ def above_threshold(student_scores, threshold):
     :param threshold: int - threshold to cross to be the "best" score.
     :return: list - of integer scores that are at or above the "best" threshold.
     """
-    best_student = []
-    for score in student_scores:
-        if score >= threshold:
-            best_student.append(score)
-
-    return best_student
+    return [score for score in student_scores if score >= threshold]
 
 def letter_grades(highest):
     """Create a list of grade thresholds based on the provided highest grade.
