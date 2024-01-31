@@ -1,6 +1,5 @@
 """Functions for organizing and calculating student exam scores."""
 
-
 def round_scores(student_scores):
     """Round all provided student scores.
 
@@ -39,14 +38,9 @@ def letter_grades(highest):
             71 <= "B" <= 85
             86 <= "A" <= 100
     """
-    fail_grade = 41
-    grade_range = (highest - 40) / 4
-    grade_letter = []
-    while fail_grade <= highest:
-        grade_letter.append(int(fail_grade))
-        fail_grade += grade_range
+    grade_range = int((highest - 40) / 4)
 
-    return grade_letter
+    return [41 + index * grade_range for index in range(4)]
 
 def student_ranking(student_scores, student_names):
     """Organize the student's rank, name, and grade information in ascending order.
