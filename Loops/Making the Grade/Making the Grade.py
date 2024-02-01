@@ -51,7 +51,7 @@ def student_ranking(student_scores, student_names):
     """
     ranking = []
     for rank, score in enumerate(student_scores):
-        ranking.append("{}. {}: {}".format(rank+1, student_names[rank], score))
+        ranking.append(f"{rank+1}. {student_names[rank]}: {score}")
         
     return ranking
 
