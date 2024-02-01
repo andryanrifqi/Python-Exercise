@@ -50,8 +50,8 @@ def student_ranking(student_scores, student_names):
     :return: list - of strings in format ["<rank>. <student name>: <score>"].
     """
     ranking = []
-    for rank, number in enumerate(student_scores):
-        ranking.append("{}. {}: {}".format(rank+1, student_names[rank], student_scores[rank]))
+    for rank, score in enumerate(student_scores):
+        ranking.append("{}. {}: {}".format(rank+1, student_names[rank], score))
         
     return ranking
 
